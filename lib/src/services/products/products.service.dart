@@ -3,7 +3,7 @@ import 'package:starter_application/src/core/chopper/chopper_client.dart';
 import 'package:starter_application/src/core/chopper/json_serializable_converter.dart';
 import 'package:starter_application/src/models/models.dart';
 
-part 'products_service.chopper.dart';
+part 'products.service.chopper.dart';
 
 @ChopperApi()
 abstract class ProductsService extends ChopperService {
@@ -17,6 +17,6 @@ abstract class ProductsService extends ChopperService {
     return _$ProductsService(client);
   }
 
-  @Get(path: "/products")
+  @Get(path: "http/403/forbidden")
   Future<Response<ProductsResponse>> getProducts();
 }

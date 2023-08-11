@@ -1,3 +1,3 @@
 library services;
 
-export 'products/products_service.dart';
+export 'products/products.service.dart';

@@ -10,3 +10,10 @@ class ProductsLoaded extends ProductsState {
 
   ProductsLoaded(this.products, this.totalProducts);
 }
+
+class ProductsError extends ProductsState {
+  final int statusCode;
+  final String message;
+
+  ProductsError(this.statusCode, this.message);
+}

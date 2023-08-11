@@ -19,6 +19,8 @@ class ProductsScreen extends StatelessWidget {
             child: switch (state) {
               ProductsLoading() => const CircularProgressIndicator(),
               ProductsLoaded() => _buildListView(context, state),
+              ProductsError() =>
+                Text("Error ${state.statusCode}: ${state.message}"),
             },
           );
         },
@@ -28,18 +30,20 @@ class ProductsScreen extends StatelessWidget {
 
   Widget _buildListView(BuildContext context, ProductsLoaded state) {
     return ListView.builder(
+      padding: const EdgeInsets.all(16),
       itemCount: state.totalProducts,
       itemBuilder: (context, index) {
+        final product = state.products[index];
         return ListTile(
           leading: CircleAvatar(
             child: CachedNetworkImage(
-              imageUrl: state.products[index].thumbnail,
+              imageUrl: product.thumbnail,
               fit: BoxFit.cover,
             ),
           ),
-          title: Text(state.products[index].title),
+          title: Text(product.title),
           subtitle: Text(
-            state.products[index].description,
+            product.description,
             style: Theme.of(context).textTheme.labelMedium,
           ),
         );
