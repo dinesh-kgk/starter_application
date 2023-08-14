@@ -1,7 +1,7 @@
 import 'package:starter_application/src/core/error_handler/api_error_handler.dart';
 import 'package:starter_application/src/core/error_handler/general_response.dart';
-import 'package:starter_application/src/models/products/products_response.dart';
-import 'package:starter_application/src/services/products/products.service.dart';
+import 'package:starter_application/src/models/models.dart';
+import 'package:starter_application/src/services/services.dart';
 
 class ProductsRepository with APIErrorHandler {
   ProductsRepository();
