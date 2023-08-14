@@ -9,9 +9,8 @@ class ProductsRepository with APIErrorHandler {
   final _productsService = ProductsService();
 
   Future<GeneralResponse<ProductsResponse>> getProducts() async {
-    final generalResponse = await handleError(
-      () => _productsService.getProducts(),
-    );
+    final generalResponse = await handleError(_productsService.getProducts);
+
     return generalResponse;
   }
 }

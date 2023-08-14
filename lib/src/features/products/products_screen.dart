@@ -16,14 +16,20 @@ class ProductsScreen extends StatelessWidget {
       body: BlocBuilder<ProductsCubit, ProductsState>(
         builder: (context, state) {
           return Center(
-            child: switch (state) {
-              ProductsLoading() => const CircularProgressIndicator(),
-              ProductsLoaded() => _buildListView(context, state),
-              ProductsError() =>
-                Text("Error ${state.statusCode}: ${state.message}"),
-            },
+            child: RepaintBoundary(
+              child: switch (state) {
+                ProductsLoading() => const CircularProgressIndicator(),
+                ProductsLoaded() => _buildListView(context, state),
+                ProductsError() =>
+                  Text("Error ${state.statusCode}: ${state.message}"),
+              },
+            ),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.refresh),
+        onPressed: () => BlocProvider.of<ProductsCubit>(context).getProducts(),
       ),
     );
   }
