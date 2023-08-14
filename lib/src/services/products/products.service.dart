@@ -10,6 +10,6 @@ part 'products.service.g.dart';
 abstract class ProductsService {
   factory ProductsService() => _ProductsService(buildDio());
 
-  @GET("/http/401/hi")
+  @GET("/products/")
   Future<ProductsResponse> getProducts();
 }
